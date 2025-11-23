@@ -6,6 +6,6 @@ This repository contains codes for:
 5. Plotting figures based on the processed data.
 
 Additional codes are provided for:
-a. Generating animations/movies after steady state.
-b. Plotting the largest clusters.
+a. Post-processing the sampled snapshots.
+b. Plotting figures based on the processed data.
 
