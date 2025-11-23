@@ -6,6 +6,6 @@ This repository contains codes for:
 5. Plotting figures based on the processed data.
 
 Additional codes are provided for:
-• Generating animations/movies after steady state.
-• Plotting the largest clusters.
+1. Generating animations/movies after steady state.
+2. Plotting the largest clusters.
 
