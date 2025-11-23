@@ -9,4 +9,6 @@ This repository contains codes for:
 Additional codes are provided for:
 
 a. Generating animations/movies after steady state,
+
 b. Plotting the largest clusters.
+
