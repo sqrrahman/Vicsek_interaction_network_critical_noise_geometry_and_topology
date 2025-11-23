@@ -6,8 +6,5 @@ This repository contains codes for:
 4. Post-processing the sampled snapshots,
 5. Plotting figures based on the processed data.
 
-Additional codes are provided for:
-
-a. Generating animations/movies after steady state,
-b. Plotting the largest clusters.
+Additional codes are provided for generating animations/movies after steady state and for plotting the largest clusters.
 
