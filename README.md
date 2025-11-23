@@ -1,2 +1,11 @@
-This repository contains codes for 1. running Vicsek simulations up to steady state, 2. generating snapshots after reaching steady state, 3. finding and analyzing the clusters formed in the snapshot, 4. post-processing the snapshopts, and 5. plotting figures.
-Additional codes for generating animation/ movie after steady state and for plotting the largest clusters are provided.
+This repository contains codes for:
+1. Running Vicsek simulations up to steady state.
+2. Generating snapshots after reaching steady state.
+3. Identifying and analyzing the clusters formed in the snapshots.
+4. Post-processing the sampled snapshots.
+5. Plotting figures based on the processed data.
+
+Additional codes are provided for:
+• Generating animations/movies after steady state.
+• Plotting the largest clusters.
+
