@@ -1,4 +1,4 @@
-This repository contains codes for:
+This repository contains code templates for:
 
 1. Running Vicsek simulations up to steady state,
 2. Generating snapshots after reaching steady state,
