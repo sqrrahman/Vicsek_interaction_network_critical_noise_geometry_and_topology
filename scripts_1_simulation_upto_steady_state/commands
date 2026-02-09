@@ -1,0 +1,44 @@
+#command_to_get_sml_cpp_files
+#!/bin/bash
+declare -a rhos=(0.10 0.10 0.10 0.25 0.25 0.25 1.00 1.00 1.00)
+declare -a speeds=(0.10 0.25 1.0 0.10 0.25 1.0 0.10 0.25 1.0)
+declare -a noise_sets=("0.09" "0.11" "0.17" "0.14" "0.17" "0.25" "0.28" "0.31" "0.40")
+
+for i in {0..8}
+do
+    folder="set_$((i+1))"
+    mkdir -p "$folder"
+    
+    rho=${rhos[i]}
+    speed=${speeds[i]}
+    noise_values="${noise_sets[i]}"
+    
+    [ -z "$noise_values" ] && continue
+    
+    noise_cpp_format="{$noise_values}"
+    
+    sed -e "s|{RHO_VALUE}|$rho|g" \
+        -e "s|{SPEED_VALUE}|$speed|g" \
+        -e "s|{NOISE_VALUES}|$noise_cpp_format|g" \
+        sml_template.cpp > "$folder/sml.cpp"
+done
+echo "All sets created successfully!"
+
+
+
+
+# command_to_get_sml_job_script_files
+for i in {1..9}
+do
+  cp sml.sh set_$i/
+done
+
+
+
+#command_to_run_jobs
+for i in {1..9}; do
+  cd "set_$i"
+  chmod +x sml.sh
+  sbatch sml.sh
+  cd ..
+done

@@ -1,0 +1,49 @@
+#command_to_get_sml_sampled_cpp_files
+#!/bin/bash
+declare -a rhos=(0.10 0.10 0.10 0.25 0.25 0.25 1.00 1.00 1.00)
+declare -a speeds=(0.10 0.25 1.00 0.10 0.25 1.00 0.10 0.25 1.00)
+declare -a noises=(0.09 0.11 0.17 0.14 0.17 0.25 0.28 0.31 0.40)
+n_sims=5
+for i in {0..8}; do
+  folder="set_$((i+1))"
+  mkdir -p "$folder"
+  rho=${rhos[i]}
+  speed=${speeds[i]}
+  noise=${noises[i]}
+
+  for ((sim_idx=1; sim_idx<=n_sims; sim_idx++)); do
+    sed -e "s/{RHO_VALUE}/$rho/" \
+        -e "s/{SPEED_VALUE}/$speed/" \
+        -e "s/{NOISE_VALUE}/$noise/" \
+        -e "s/{START_IDX}/$sim_idx/" \
+        -e "s/{END_IDX}/$sim_idx/" \
+        sml_sampled_template.cpp > "$folder/sml_sampled_${sim_idx}.cpp"
+  done
+done
+
+
+
+
+#command_to_get_sml_sampled_job_script_files
+#!/bin/bash
+n_sims=5
+for i in {1..9}; do
+  for ((j=1; j<=n_sims; j++)); do
+    sed "s/{START_IDX}/$j/g" sml_sampled_template_sh > "set_$i/sml_sampled_${j}.sh" 2>/dev/null || echo "Error: set_$i/sml_sampled_${j}.sh failed"
+  done
+done
+
+
+
+
+
+
+#command_to_run_jobs_sml_sampled
+for i in {1..9}; do
+  cd "set_$i"
+  for j in {1..5}; do
+    chmod +x "sml_sampled_${j}.sh"
+    sbatch "sml_sampled_${j}.sh"
+  done
+  cd ..
+done

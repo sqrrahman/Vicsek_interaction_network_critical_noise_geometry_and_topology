@@ -1,0 +1,19 @@
+#command_to_get_cc_cpp_and_cc_job_script_files
+for i in {1..9}; do
+  cp cc.cpp set_$i/sampled/
+  cp cc.sh set_$i/sampled/
+done
+
+
+
+
+#command_to_run_jobs_cc
+for i in {1..9}; do (
+  cd "set_$i/sampled" &&
+  chmod +x cc.sh &&
+  sbatch cc.sh
+); done
+
+
+
+

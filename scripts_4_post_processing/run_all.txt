@@ -1,0 +1,8 @@
+( cd pp_1_cmpd                  && chmod +x cmpd.sh                 && sbatch cmpd.sh )
+( cd pp_2_mkl                   && chmod +x post_mkl.sh             && sbatch post_mkl.sh )
+( cd pp_3_cc                    && chmod +x post_cc.sh              && sbatch post_cc.sh )
+( cd pp_4_area                  && chmod +x post_area.sh            && sbatch post_area.sh )
+( cd pp_5_boundary              && chmod +x post_perimeter.sh       && sbatch post_perimeter.sh )
+( cd pp_6_degree_distribution   && chmod +x degree_distribution.sh  && sbatch degree_distribution.sh )
+( cd pp_7_pk_over_k             && chmod +x pk_over_k_combined.sh   && sbatch pk_over_k_combined.sh )
+

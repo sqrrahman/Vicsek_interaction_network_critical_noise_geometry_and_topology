@@ -1,0 +1,36 @@
+#command_to_get_cpp_files
+#!/bin/bash
+declare -a rhos=(0.10 0.10 0.10 0.25 0.25 0.25 1.00 1.00 1.00)
+declare -a speeds=(0.10 0.25 1.00 0.10 0.25 1.00 0.10 0.25 1.00)
+
+for i in {0..8}; do
+    folder="set_$((i+1))/sampled"
+    rho=${rhos[i]}
+    speed=${speeds[i]}
+
+    sed -e "s/{RHO_VALUE}/$rho/" \
+        -e "s/{SPEED_VALUE}/$speed/" \
+        neighbor_template.cpp > "$folder/neighbor.cpp"
+done
+
+
+
+
+#command_to_get_job_script_files
+#!/bin/bash
+for i in {1..9}; do
+    outdir="set_${i}/sampled"
+    mkdir -p "$outdir"
+    sed -e "s/{IDX}/$i/g" neighbor_template.sh > "${outdir}/neighbor.sh"
+done
+
+
+
+
+#command_to_run_jobs
+for i in {1..9}; do
+  cd "set_$i/sampled"
+  chmod +x neighbor.sh
+  sbatch neighbor.sh
+  cd ../..
+done

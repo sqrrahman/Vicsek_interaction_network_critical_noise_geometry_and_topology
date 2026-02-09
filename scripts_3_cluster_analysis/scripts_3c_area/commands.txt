@@ -1,0 +1,18 @@
+#command_to_get_cpp_and_job_script_files
+for i in {1..9}; do
+  cp cluster_area_calc.cpp set_$i/sampled/
+  cp cluster_area_calc.sh set_$i/sampled/
+done
+
+
+
+
+
+#command_to_run_jobs
+for i in {1..9}; do (
+  cd "set_$i/sampled" &&
+  chmod +x cluster_area_calc.sh &&
+  sbatch cluster_area_calc.sh
+); done
+
+
