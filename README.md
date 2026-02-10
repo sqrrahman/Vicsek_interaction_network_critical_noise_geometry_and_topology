@@ -6,14 +6,22 @@ This repository contains codes and scripts for studying geometry and network top
 4. Post-processing the sampled snapshots,
 5. Plotting figures based on the processed data.
 
-
-# How to use
+Additional scripts are provided for generating animations/movies (scripts_1a_movie) and for plotting the largest clusters (scripts_3a_cluster_shapes).
 
 The codes here are configured for N = 512. User should adjust (a) required number of timesteps to reach steady state, (b) the number of simulations/realizations, (c) the corresponding critical noise values, (d) sampling frequency, (e) number of snapshots/samples etc. as required.
 
-Sample SLURM job scripts and relevant bash command files (commands.txt) are provided to illustrate the typical workflow. The provided bash scripts are intended for Linux-based HPC systems. On Windows, the C++ codes can be compiled using a standard compiler (e.g., g++ with OpenMP support) and executed locally (e.g., using WSL, MinGW, or Visual Studio). MATLAB scripts can be run interactively.
+## Contents
+Each folder contains required c++ and/or MATLAB files. If a template is provided, use the placeholders to create files from them.
+Sample SLURM job scripts and relevant bash command files (commands.txt) are provided to illustrate the typical workflow.
 
-The overall workflow is divided into the following stages. Additional scripts are provided for generating animations/movies (scripts_1a_movie) and for plotting the largest clusters (scripts_3a_cluster_shapes).
+## Requirements
+The provided bash scripts are intended for Linux-based HPC systems.
+On Windows, the C++ codes can be compiled using a standard compiler (e.g., g++ with OpenMP support) and executed locally (e.g., using WSL, MinGW, or Visual Studio).
+On windows, MATLAB scripts can be run interactively.
+
+
+
+The overall workflow is divided into the following stages.
 
 ### Part 1: Simulation up to steady state
 Copy the files in project directory and use the commands provided in commands.txt to generate C++ and job script files and run the jobs.
