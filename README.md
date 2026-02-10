@@ -13,7 +13,7 @@ The codes here are configured for N = 512. User should adjust (a) required numbe
 
 Sample SLURM job scripts and relevant bash command files (commands.txt) are provided to illustrate the typical workflow. The provided bash scripts are intended for Linux-based HPC systems. On Windows, the C++ codes can be compiled using a standard compiler (e.g., g++ with OpenMP support) and executed locally (e.g., using WSL, MinGW, or Visual Studio). MATLAB scripts can be run interactively.
 
-The overall workflow is divided into the following stages. Additional scripts are provided for generating animations/movies (Part 1a_movie) and for plotting the largest clusters (Part 3a_cluster).
+The overall workflow is divided into the following stages. Additional scripts are provided for generating animations/movies (scripts_1a_movie) and for plotting the largest clusters (scripts_3a_cluster_shapes).
 
 ### Part 1: Simulation up to steady state
 Copy the files in project directory and use the commands provided in commands.txt to generate C++ and job script files and run the jobs.
