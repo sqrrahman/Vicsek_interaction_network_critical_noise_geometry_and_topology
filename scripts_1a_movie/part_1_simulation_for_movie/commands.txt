@@ -1,0 +1,43 @@
+#command_to_get_cpp_files
+
+#!/bin/bash
+declare -a rhos=(0.10 0.10 0.10 0.25 0.25 0.25 1.00 1.00 1.00)
+declare -a speeds=(0.10 0.25 1.00 0.10 0.25 1.00 0.10 0.25 1.00)
+declare -a noises=(0.08 0.11 0.18 0.13 0.17 0.26 0.24 0.31 0.39)
+for i in {0..8}
+do
+  folder="set_$((i+1))"
+  mkdir -p "$folder"         # Create folder if it doesn't exist
+  rho=${rhos[i]}
+  speed=${speeds[i]}
+  noise=${noises[i]}
+  
+  sed -e "s/{RHO_VALUE}/$rho/" -e "s/{SPEED_VALUE}/$speed/" -e "s/{NOISE_VALUE}/$noise/" movie_template.cpp > "$folder/movie.cpp"
+done
+
+
+
+
+
+
+#command_to_get_job_script_files
+
+for i in {1..9}
+do
+  cp movie.sh set_$i/
+done
+
+
+
+
+
+
+
+#command_to_run_jobs
+
+for i in {1..9}; do
+  cd "set_$i"               # Navigate to each set_x folder
+  chmod +x movie.sh   # Make sml.sh executable
+  sbatch movie.sh     # Submit the job
+  cd ..                     # Go back to N512 folder
+done

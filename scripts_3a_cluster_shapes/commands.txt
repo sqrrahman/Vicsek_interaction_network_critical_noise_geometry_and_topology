@@ -1,0 +1,16 @@
+# command_1_run_cpp_jobs
+
+
+chmod +x shapes.sh
+sbatch shapes.sh
+
+
+
+
+# after_cpp_jobs_are_done__run_matlab_jobs
+
+
+chmod +x shapes_matlab.sh
+sbatch shapes_matlab.sh
+
+

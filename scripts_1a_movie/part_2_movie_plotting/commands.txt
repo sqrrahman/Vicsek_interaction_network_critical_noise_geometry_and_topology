@@ -1,0 +1,38 @@
+#command_to_get_matlab_files
+
+#!/bin/bash
+declare -a rhos=(0.10 0.10 0.10 0.25 0.25 0.25 1.00 1.00 1.00)
+for i in {1..9}; do
+  mkdir -p set_$i/movie
+  
+  rho=${rhos[$i-1]}
+  setIdx=$i
+  
+  sed -e "s/{RHO_VALUE}/$rho/" -e "s/{setIdx}/$setIdx/" movie_template.m > set_$i/movie/movie.m
+done
+
+
+
+
+
+# command_to_get_job_script_files
+
+#!/bin/bash
+# Loop over each set (1 to 9)
+for i in {1..9}; do
+  cp movie_matlab.sh set_$i/movie/
+done
+
+
+
+
+
+
+#command_to_run_jobs
+
+for i in {1..9}; do
+  cd "set_$i/movie"
+  chmod +x movie_matlab.sh
+  sbatch movie_matlab.sh
+  cd ../..
+done
