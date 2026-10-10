@@ -1,4 +1,4 @@
-This repository contains codes and scripts for studying geometry and network topology of Vicsek clusters. The workflow consists of the following stages:
+This repository contains codes and scripts for studying geometry and network topology of Vicsek clusters necessary for reproducing the results presented in the PRR journal paper titled "Topology and geometry of clusters in the Vicsek model across scales". It also includes comparisons of geometry and topology of clusters under 3 different update rules (Backward update, forward update, and the corrected update rule from PRR erratum) demonstrating how the choice of update rule affects the simulation results and cluster properties. The workflows consists of the following stages:
 
 1. Running Vicsek simulations up to steady state,
 2. Generating snapshots after reaching steady state,
@@ -8,11 +8,13 @@ This repository contains codes and scripts for studying geometry and network top
 
 Additional scripts are provided for generating animations/movies (scripts_1a_movie) and for plotting the largest clusters (scripts_3a_cluster_shapes).
 
-The codes here are configured for N = 512. User should adjust (a) required number of timesteps to reach steady state, (b) the number of simulations/realizations, (c) the corresponding critical noise values, (d) sampling frequency, (e) number of snapshots/samples etc. as required.
+The codes here are configured for N = 512 and for the corrected PRR update rule. User should adjust (a) required number of timesteps to reach steady state, (b) the number of simulations/realizations, (c) the corresponding critical noise values, (d) sampling frequency, (e) number of snapshots/samples etc. as required.
 
 ## Contents
 Each folder contains required c++ and/or MATLAB files. If a template is provided, use the placeholders to create files from them.
 Sample SLURM job scripts and relevant bash command files (commands.txt) are provided to illustrate the typical workflow.
+"comparing_update_rules" folder has simulation codes for different update rules and figures comparing their results.
+
 
 ## Requirements
 The provided bash scripts are intended for Linux-based HPC systems.
