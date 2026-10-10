@@ -53,3 +53,12 @@ It will calculate average over snapshots/samples for each density-speed pair and
 ### Part 5: Plotting
 Copy the cmpd_binned and similar subfolders and paste them in project_directory\script_5_plotting\post_binned_data\N512 folder.
 Run the matlab files in script_5_plotting\plotting_scripts subfolder to generate plots.
+
+### Comparing update rules
+Subfolder a_simulation_codes: contains simulation code for the forward update rule (FW), backward update rule (BW), and the corrected update rule from the erratum to the PRR paper (PRR).
+To run simulations using BW, replace: (1) scripts_1_simulation_upto_steady_state/sml_template.cpp with sml_template_BW.cpp and (2) scripts_2_simulation_sampling_after_steady_state/sml_sampled_template.cpp with sml_sampled_template_BW.cpp
+For FW, use sml_template_FW.cpp and sml_sampled_template_FW.cpp instead.
+
+Subfolder b_plotting: post_binned_data contains post-processed data for all three update rules with N = 32768. The other three folders contain plots comparing the rules.
+
+Results obtained using the corrected Equation (2) are indistinguishable from those obtained using FW, while results obtained using BW differ.
